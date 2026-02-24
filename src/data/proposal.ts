@@ -1,83 +1,165 @@
-import type { Profile, PortfolioProject } from "@/lib/types";
+// src/data/proposal.ts
 
-export const profile: Profile = {
-  name: "Humam",
-  tagline: "Full-stack developer specializing in Next.js applications",
-  bio: "I build MVPs and production apps that solve real operational problems — CRM systems, fleet management platforms, AI-powered dashboards, and e-commerce tools. My approach is straightforward: understand the business need, build something that works, and ship it fast.",
-  approach: [
+export interface PortfolioProject {
+  name: string;
+  description: string;
+  outcome: string;
+  tech: string[];
+  url?: string; // omit if no live demo
+}
+
+export interface ApproachStep {
+  step: string;
+  title: string;
+  description: string;
+  timeline: string;
+}
+
+export interface SkillCategory {
+  label: string;
+  skills: string[];
+}
+
+export interface HeroStat {
+  value: string;
+  label: string;
+}
+
+export interface ProposalData {
+  hero: {
+    name: string;
+    valueProp: string;
+    badgeText: string;
+    stats: HeroStat[];
+  };
+  projects: PortfolioProject[];
+  approachSteps: ApproachStep[];
+  skillCategories: SkillCategory[];
+  cta: {
+    heading: string;
+    subtext: string;
+    authorName: string;
+  };
+}
+
+export const proposalData: ProposalData = {
+  hero: {
+    name: "Humam",
+    valueProp:
+      "I build healthcare SaaS platforms with real compliance workflows — SAFER Matrix scoring, RBAC, offline rounding, and audit-ready reporting. Here's one I built for your project.",
+    badgeText: "Built this demo for your project",
+    stats: [
+      { value: "24+", label: "projects shipped" },
+      { value: "< 48hr", label: "demo turnaround" },
+      { value: "15+", label: "industries served" },
+    ],
+  },
+  projects: [
     {
-      title: "Understand the Problem",
-      description: "Read the full requirements, identify the core pain point",
-    },
-    {
-      title: "Build a Working Demo",
+      name: "Southfield Healthcare",
       description:
-        "Show, don't tell — a live demo is worth 1000 words of proposal text",
+        "Healthcare operations platform with patient management, appointment scheduling, provider dashboards, and clinical analytics — built for a multi-department clinic.",
+      outcome:
+        "Consolidated patient scheduling and management into a single interface, replacing disconnected spreadsheet workflows",
+      tech: ["Next.js", "TypeScript", "Tailwind", "Recharts", "shadcn/ui"],
+      url: "https://southfield-healthcare.vercel.app",
     },
     {
-      title: "Use Realistic Data",
+      name: "Tinnitus Therapy SaaS",
       description:
-        "Mock data that looks like real client data, not placeholder text",
+        "Multi-clinic therapy management platform with patient intake, treatment protocols, session tracking, and outcome dashboards — full SaaS architecture supporting multiple locations.",
+      outcome:
+        "Multi-clinic SaaS covering the full patient journey — intake, protocol assignment, session tracking, and outcome dashboards",
+      tech: ["Next.js", "TypeScript", "Tailwind", "Recharts", "shadcn/ui"],
+      url: "https://tinnitus-therapy.vercel.app",
     },
     {
-      title: "Ship Fast",
-      description: "MVP first, polish later. Get something deployed quickly",
+      name: "Fleet Maintenance SaaS",
+      description:
+        "6-module SaaS platform with asset tracking, work orders, preventive maintenance scheduling, inspections, parts inventory, and analytics — directly comparable to multi-module compliance platforms.",
+      outcome:
+        "6-module SaaS covering the full maintenance lifecycle — from asset registry to work orders to parts inventory",
+      tech: ["Next.js", "TypeScript", "Recharts", "shadcn/ui"],
+      // no url — omit ExternalLink icon
+    },
+    {
+      name: "PayGuard — Transaction Monitor",
+      description:
+        "Compliance monitoring dashboard with real-time flagging, alert management, and enforcement tracking — demonstrating the RBAC and audit trail patterns needed for healthcare compliance.",
+      outcome:
+        "Compliance monitoring dashboard with transaction flagging, multi-account linking, and alert delivery tracking",
+      tech: ["Next.js", "TypeScript", "Tailwind", "Recharts", "shadcn/ui"],
+      url: "https://payment-monitor.vercel.app",
+    },
+  ],
+  approachSteps: [
+    {
+      step: "01",
+      title: "Understand",
+      description:
+        "Map your SAFER Matrix workflows, RBAC roles, and offline rounding requirements before touching code. One alignment call saves two weeks of rework.",
+      timeline: "Day 1–2",
+    },
+    {
+      step: "02",
+      title: "Build",
+      description:
+        "Working mobile and web builds from day one — rounding flows, deficiency capture, and scoring visible within the first week. No dark periods.",
+      timeline: "Week 1–2",
+    },
+    {
+      step: "03",
+      title: "Ship",
+      description:
+        "Production-ready with RBAC enforced, offline sync tested, and clean TypeScript you can hand off or extend without apologizing for.",
+      timeline: "Week 2–3",
+    },
+    {
+      step: "04",
+      title: "Iterate",
+      description:
+        "Short feedback cycles — you review it, we refine it. Regulatory workflows evolve; the codebase should keep up without a full rewrite.",
+      timeline: "Ongoing",
     },
   ],
   skillCategories: [
     {
-      name: "Frontend",
+      label: "Frontend & Mobile",
       skills: [
-        "TypeScript",
-        "React",
+        "React Native",
         "Next.js",
+        "React",
+        "TypeScript",
         "Tailwind CSS",
         "shadcn/ui",
-        "Recharts",
       ],
     },
     {
-      name: "Backend & APIs",
+      label: "Backend & Auth",
       skills: [
         "Node.js",
         "REST APIs",
-        "Microsoft Graph",
-        "Stripe",
-        "Shopify API",
+        "Role-Based Auth (RBAC)",
+        "PostgreSQL",
+        "Azure",
       ],
     },
     {
-      name: "AI & Automation",
+      label: "SaaS & Platform",
       skills: [
-        "Claude API",
-        "OpenAI API",
-        "n8n",
-        "Prompt Engineering",
+        "Multi-tenant architecture",
+        "Offline sync",
+        "Audit trails",
+        "Recharts",
+        "Vercel",
       ],
     },
   ],
+  cta: {
+    heading: "Let's build this together.",
+    subtext:
+      "I built this demo to show you exactly what I'd ship. The real product — with offline sync, SAFER scoring, and RBAC enforced end-to-end — will be even better.",
+    authorName: "Humam",
+  },
 };
 
-export const portfolioProjects: PortfolioProject[] = [
-  {
-    id: "wmf-agent",
-    title: "WMF Agent Dashboard",
-    description:
-      "AI-powered customer service agent for manufacturing — email classification, RFQ extraction, human-in-the-loop approval",
-    tech: ["Next.js", "Claude API", "n8n", "Microsoft Graph"],
-  },
-  {
-    id: "lead-crm",
-    title: "Lead Intake CRM",
-    description:
-      "Lead intake form, CRM dashboard, lead scoring, pipeline management, and automation rules",
-    tech: ["Next.js", "TypeScript", "Tailwind", "shadcn/ui"],
-  },
-  {
-    id: "fleet-saas",
-    title: "Fleet Maintenance SaaS",
-    description:
-      "Asset tracking, work orders, preventive maintenance, inspections, parts inventory, analytics",
-    tech: ["Next.js", "Recharts", "TypeScript", "shadcn/ui"],
-  },
-];

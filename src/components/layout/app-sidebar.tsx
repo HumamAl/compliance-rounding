@@ -13,10 +13,18 @@ import {
   User,
   ArrowRight,
   Github,
+  AlertTriangle,
+  ClipboardCheck,
+  Building2,
+  BookOpen,
 } from "lucide-react";
 
 const navItems = [
   { href: "/", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/deficiencies", label: "Deficiencies", icon: AlertTriangle },
+  { href: "/rounds", label: "Rounds", icon: ClipboardCheck },
+  { href: "/facilities", label: "Facilities", icon: Building2 },
+  { href: "/standards", label: "Standards", icon: BookOpen },
 ];
 
 interface SidebarContentProps {

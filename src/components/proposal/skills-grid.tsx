@@ -1,5 +1,8 @@
+// src/components/proposal/skills-grid.tsx
+// Server Component — no hooks needed
+
 interface SkillCategory {
-  name: string;
+  label: string;
   skills: string[];
 }
 
@@ -9,22 +12,36 @@ interface SkillsGridProps {
 
 export function SkillsGrid({ categories }: SkillsGridProps) {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      {categories.map((category) => (
-        <div key={category.name} className="rounded-lg border border-border/60 bg-card p-4 shadow-[0_1px_2px_0_rgb(0_0_0/0.03)]">
-          <h3 className="text-sm font-medium mb-2">{category.name}</h3>
-          <div className="flex flex-wrap gap-1.5">
-            {category.skills.map((skill) => (
-              <span
-                key={skill}
-                className="px-2 py-0.5 text-xs rounded-md bg-primary/10 text-primary"
-              >
-                {skill}
-              </span>
-            ))}
+    <section className="space-y-5">
+      <div>
+        <p className="font-mono text-xs tracking-widest uppercase text-muted-foreground mb-1">
+          Stack
+        </p>
+        <h2 className="text-2xl font-bold tracking-tight">Relevant Skills</h2>
+        <p className="text-sm text-muted-foreground mt-1">
+          The tools that matter for this project.
+        </p>
+      </div>
+
+      <div className="space-y-4">
+        {categories.map((category) => (
+          <div key={category.label} className="linear-card p-5 space-y-3">
+            <p className="font-mono text-xs tracking-widest uppercase text-muted-foreground">
+              {category.label}
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {category.skills.map((skill) => (
+                <span
+                  key={skill}
+                  className="px-2.5 py-1 rounded-full border border-border/60 text-sm font-mono text-foreground/80 bg-muted/30"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    </section>
   );
 }
