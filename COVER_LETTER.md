@@ -2,7 +2,7 @@ Hi,
 
 SAFER Matrix scoring, offline sync with queue-based reconciliation, RBAC across surveyor/admin/facility roles — built a working version to show the approach:
 
-**Built this for your project:** {VERCEL_URL}
+**Built this for your project:** https://compliance-rounding.vercel.app
 
 The demo covers deficiency tracking, rounding workflows, and the admin dashboard with facility analytics — the web + mobile split you described.
 
@@ -25,7 +25,7 @@ Healthcare-focused SaaS:
 - Tinnitus Therapy SaaS (multi-clinic patient management, treatment protocols, progress tracking): https://tinnitus-therapy.vercel.app
 - Fleet Maintenance SaaS (6-module SaaS, complex RBAC, work order workflows — private repo, happy to demo live)
 
-Demo built specifically for this project: {VERCEL_URL}
+Demo built specifically for this project: https://compliance-rounding.vercel.app
 
 ---
 
